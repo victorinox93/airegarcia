@@ -367,18 +367,16 @@ const IS_DEMO = !SUPABASE_URL || SUPABASE_URL === 'TU_URL_AQUI';
 const sb = IS_DEMO ? null : supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // --- Constantes ---
-// Poligono municipio de Garcia, NL - incluye zona Cumbres sureste
+// Poligono trazado en geojson.io por el equipo AireGarcia
+// Coordenadas convertidas de GeoJSON [lng,lat] a Leaflet [lat,lng]
 const GARCIA_POLY = [
-  [25.8600,-100.7200],[25.8620,-100.6400],[25.8580,-100.5600],
-  [25.8500,-100.5000],[25.8350,-100.4700],
-  [25.8200,-100.4500],[25.8050,-100.4400],
-  [25.7900,-100.4350],[25.7750,-100.4300],[25.7600,-100.4380],
-  [25.7500,-100.4500],[25.7400,-100.4700],
-  [25.7200,-100.5000],[25.7050,-100.5500],
-  [25.7000,-100.6200],[25.7100,-100.6800],
-  [25.7300,-100.7300],[25.7700,-100.7600],
-  [25.8100,-100.7500],[25.8400,-100.7300],
-  [25.8600,-100.7200]
+  [25.857173, -100.667003],
+  [25.761743, -100.699130],
+  [25.722193, -100.594693],
+  [25.716372, -100.419399],
+  [25.772159, -100.419954],
+  [25.820441, -100.427065],
+  [25.857173, -100.667003]
 ];
 const TYPE_CLR = {quimico:'#E84A2F',combustion:'#D97706',organico:'#059669',plastico:'#7C3AED',otro:'#64748b'};
 const TYPE_NM  = {quimico:'Químico',combustion:'Combustión',organico:'Orgánico',plastico:'Plástico',otro:'Otro'};
@@ -480,7 +478,7 @@ function renderMap() {
       color:'rgba(255,255,255,.7)',weight:1.5,fillOpacity:.85
     }).bindPopup(
       `<b>${TYPE_NM[r.tipo]||r.tipo}</b> · Int. ${r.intensidad}/5<br>`+
-      `${r.notas?r.notas+'<br>':''}<small>${new Date(r.created_at).toLocaleString('es-MX')}</small>`
+      `${r.notas?r.notas+'<br>':''}<small>${new Date(r.created_at).toLocaleString('es-MX',{timeZone:'America/Monterrey'})}</small>`
     ).addTo(mrkL);
     hd.push([r.lat, r.lng, (r.intensidad||1)/5]);
   });
@@ -720,7 +718,7 @@ function renderDataTable() {
   const rows=allR.slice(0,150);
   if(!rows.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--slate);padding:16px">Sin reportes aún.</td></tr>';return;}
   tbody.innerHTML=rows.map(r=>{
-    const d=new Date(r.created_at).toLocaleString('es-MX',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    const d=new Date(r.created_at).toLocaleString('es-MX',{timeZone:'America/Monterrey',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
     return`<tr>
       <td style="white-space:nowrap">${d}</td>
       <td><span class="dot" style="background:${TYPE_CLR[r.tipo]||'#888'}"></span>${TYPE_NM[r.tipo]||r.tipo}</td>
@@ -806,7 +804,7 @@ async function submitReport() {
     document.getElementById('loc-icon').textContent='📡';
     document.getElementById('loc-txt').textContent='Toca el botón para verificar tu ubicación GPS';
     showToast('¡Gracias! Tu reporte fue registrado');
-    setTimeout(()=>{btn.textContent='Enviar reporte';btn.classList.remove('ok');btn.disabled=true;},3000);
+    setTimeout(()=>{btn.textContent='Enviar reporte';btn.classList.remove('ok');btn.disabled=true;switchTab('mapa');},3000);
   } else {
     btn.disabled=false; btn.textContent='Enviar reporte';
   }
