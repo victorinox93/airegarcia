@@ -54,10 +54,10 @@ main{flex:1;position:relative;overflow:hidden;}
 
 /* --- Bottom Nav --- */
 nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid var(--border);display:flex;}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:none;background:transparent;cursor:pointer;padding:6px 0 4px;color:var(--slate);font-family:'DM Sans',sans-serif;}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:none;background:transparent;cursor:pointer;padding:5px 0 4px;color:var(--slate);font-family:'DM Sans',sans-serif;min-width:0;}
 .tab.active{color:var(--navy);}
-.tab-icon{font-size:20px;line-height:1;}
-.tab-label{font-size:10px;font-weight:500;}
+.tab-icon{font-size:18px;line-height:1;}
+.tab-label{font-size:9px;font-weight:500;}
 .tab-report .tab-icon{width:42px;height:42px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;margin-top:-14px;box-shadow:0 3px 10px rgba(232,74,47,.45);}
 
 /* --- Toast --- */
@@ -88,7 +88,7 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .chart-wrap.h160{height:160px;}
 
 /* --- Charts 2-col --- */
-.charts2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px;margin-bottom:10px;}
+.charts2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px;margin-bottom:10px;}@media(max-width:480px){.charts2{grid-template-columns:1fr;}.chart-wrap.h160{height:180px;}.chart-wrap.h200{height:190px;}.stat-val{font-size:20px;}.stat-grid{gap:8px;padding:10px 12px 0;}.section-pad{padding:10px 12px 0;}.card{padding:12px;}.pred-box{margin:0 12px 10px;}}
 .charts2 .card{margin-bottom:0;padding:12px;}
 
 /* --- Ranked list --- */
@@ -326,6 +326,113 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
     </div>
   </div>
 
+
+  <!-- INFO VIEW -->
+  <div id="view-info" class="view">
+
+    <div class="datos-hdr">
+      <h2>Acerca de AireGarcía</h2>
+      <p>Metodología, privacidad y aviso legal</p>
+    </div>
+
+    <div style="padding:14px 14px 0;">
+
+      <!-- Metodologia -->
+      <div class="section-title">Como funciona la estimacion de fuente</div>
+      <div class="card" style="margin-bottom:14px;">
+        <p style="font-size:13px;font-weight:600;margin-bottom:8px;">Centroide ponderado por intensidad</p>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:10px;">
+          Cada reporte tiene coordenadas GPS e intensidad del 1 al 5. Los reportes más intensos
+          "jalan" más el punto central — bajo la suposición de que a mayor intensidad, mayor cercanía a la fuente.
+        </p>
+        <div style="background:var(--bg);border-radius:8px;padding:12px;margin-bottom:10px;font-family:monospace;font-size:12px;color:var(--navy);line-height:1.8;">
+          lat_fuente = (lat₁·int₁ + lat₂·int₂ + ... + latₙ·intₙ)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / (int₁ + int₂ + ... + intₙ)<br><br>
+          radio = promedio_distancias × 0.55
+        </div>
+        <p style="font-size:12px;color:var(--slate);line-height:1.6;margin-bottom:6px;">
+          <strong>Limitaciones conocidas:</strong> El modelo asume dispersión simétrica del olor.
+          El viento puede desplazar la nube lejos de la fuente real. Con pocos reportes (&lt;5)
+          el estimado tiene alta incertidumbre. Un reporte muy intenso en un punto alejado
+          puede sesgar el centroide.
+        </p>
+        <p style="font-size:12px;color:var(--slate);line-height:1.6;">
+          <strong>Mejora futura:</strong> Incorporar dirección del viento (CONAGUA/SMN)
+          para corregir el desplazamiento y mejorar la precisión del estimado.
+        </p>
+      </div>
+
+      <!-- Privacidad -->
+      <div class="section-title">Privacidad y datos personales</div>
+      <div class="card" style="margin-bottom:14px;">
+        <p style="font-size:13px;line-height:1.65;color:var(--slate);">
+          AireGarcía <strong style="color:var(--navy);">no recopila datos personales.</strong>
+          Los reportes se almacenan de forma completamente anónima: solo se guarda la
+          ubicación GPS, el tipo de olor, la intensidad y la fecha/hora.
+        </p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--slate);">
+            <span style="color:var(--green);font-size:14px;flex-shrink:0;">✓</span>
+            Sin registro de usuario ni contraseña requeridos
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--slate);">
+            <span style="color:var(--green);font-size:14px;flex-shrink:0;">✓</span>
+            Sin cookies de seguimiento ni análisis de comportamiento
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--slate);">
+            <span style="color:var(--green);font-size:14px;flex-shrink:0;">✓</span>
+            Coordenadas GPS guardadas solo para geolocalizar el reporte en el mapa
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--slate);">
+            <span style="color:var(--green);font-size:14px;flex-shrink:0;">✓</span>
+            Todos los datos son públicos y descargables por cualquier persona
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--slate);">
+            <span style="color:var(--green);font-size:14px;flex-shrink:0;">✓</span>
+            Base de datos alojada en Supabase con cifrado en tránsito (HTTPS/TLS)
+          </div>
+        </div>
+      </div>
+
+      <!-- Aviso legal -->
+      <div class="section-title">Aviso legal y limitaciones</div>
+      <div class="card" style="margin-bottom:14px;border-left:3px solid var(--accent);">
+        <p style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:8px;">
+          Esta herramienta NO es una medida oficial de calidad del aire
+        </p>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:8px;">
+          AireGarcía es una herramienta de monitoreo ciudadano participativo.
+          Los datos recopilados son de carácter orientativo y no sustituyen mediciones
+          instrumentales certificadas de calidad del aire.
+        </p>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:8px;">
+          La "fuente probable" estimada por el sistema es un cálculo estadístico basado
+          en reportes ciudadanos. <strong style="color:var(--navy);">No constituye una atribución legal
+          de responsabilidad</strong> hacia ninguna empresa, industria o persona.
+        </p>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;">
+          Para denuncias formales ante autoridades ambientales, contacta a
+          <strong style="color:var(--navy);">SEMARNAT / PROFEPA</strong> (800 718 7816) o
+          la <strong style="color:var(--navy);">Agencia de Protección al Medio Ambiente de NL</strong>.
+        </p>
+      </div>
+
+      <!-- Contacto / version -->
+      <div class="section-title">Proyecto</div>
+      <div class="card" style="margin-bottom:20px;">
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;">
+          Iniciativa ciudadana desarrollada para el municipio de <strong style="color:var(--navy);">García, Nuevo León</strong>.
+          Los datos son de uso libre para investigación, periodismo y gestión pública.
+        </p>
+        <p style="font-size:12px;color:var(--slate);margin-top:8px;">
+          Tecnología: Leaflet · Chart.js · Supabase · OpenStreetMap
+        </p>
+        <p style="font-size:11px;color:var(--border);margin-top:6px;" id="ver-lbl">v1.0</p>
+      </div>
+
+    </div>
+  </div>
+
 </main>
 
 <nav>
@@ -341,6 +448,9 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
   </button>
   <button class="tab"        id="tab-datos"     onclick="switchTab('datos')">
     <span class="tab-icon">📋</span><span class="tab-label">Datos</span>
+  </button>
+  <button class="tab"        id="tab-info"      onclick="switchTab('info')">
+    <span class="tab-icon">ℹ️</span><span class="tab-label">Info</span>
   </button>
 </nav>
 
@@ -812,13 +922,15 @@ async function submitReport() {
 
 // --- Navigation ---
 function switchTab(tab) {
-  ['mapa','analytics','reportar','datos'].forEach(t=>{
+  ['mapa','analytics','reportar','datos','info'].forEach(t=>{
     document.getElementById(`view-${t}`)?.classList.toggle('active',t===tab);
     document.getElementById(`tab-${t}`)?.classList.toggle('active',t===tab);
   });
   if(tab==='mapa')      setTimeout(()=>map.invalidateSize(),80);
-  if(tab==='analytics') renderAnalytics();
-  if(tab==='datos')     renderDataTable();
+  if(tab==='analytics'){renderAnalytics();setTimeout(()=>{const v=document.getElementById('view-analytics');if(v)v.scrollTop=0;},50);}
+  if(tab==='datos')    {renderDataTable();setTimeout(()=>{const v=document.getElementById('view-datos');if(v)v.scrollTop=0;},50);}
+  if(tab==='reportar') {setTimeout(()=>{const v=document.getElementById('view-reportar');if(v)v.scrollTop=0;},50);}
+  if(tab==='info')     {setTimeout(()=>{const v=document.getElementById('view-info');if(v)v.scrollTop=0;},50);}
 }
 
 // --- Toast ---
@@ -836,4 +948,3 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 </script>
 </body>
 </html>
-
