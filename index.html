@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0C1E35">
@@ -32,7 +33,7 @@
 html,body{height:100%;overflow:hidden;font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--navy);font-size:15px;}
 #app{display:flex;flex-direction:column;height:100vh;}
 
-/* ── Header ──────────────────────────────────── */
+/* --- Header --- */
 header{
   flex-shrink:0;height:var(--hdr);background:var(--navy);
   display:flex;align-items:center;padding:0 14px;gap:10px;
@@ -42,16 +43,16 @@ header{
 .logo-text small{display:block;font-size:10px;color:rgba(255,255,255,.45);line-height:1;margin-top:1px;}
 #hdr-count{margin-left:auto;font-size:11px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.65);padding:3px 9px;border-radius:20px;border:.5px solid rgba(255,255,255,.15);white-space:nowrap;}
 
-/* ── Config banner ───────────────────────────── */
+/* --- Config banner --- */
 #config-banner{flex-shrink:0;display:none;padding:7px 14px;background:#FEF9C3;border-bottom:1px solid #FDE68A;font-size:11px;color:#854D0E;gap:6px;align-items:center;}
 
-/* ── Main ────────────────────────────────────── */
+/* --- Main --- */
 main{flex:1;position:relative;overflow:hidden;}
 .view{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none;padding-bottom:calc(var(--nav) + 8px);}
 .view.active{display:block;}
 #view-mapa{overflow:hidden;padding-bottom:0;}
 
-/* ── Bottom Nav ──────────────────────────────── */
+/* --- Bottom Nav --- */
 nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid var(--border);display:flex;}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:none;background:transparent;cursor:pointer;padding:6px 0 4px;color:var(--slate);font-family:'DM Sans',sans-serif;}
 .tab.active{color:var(--navy);}
@@ -59,11 +60,11 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .tab-label{font-size:10px;font-weight:500;}
 .tab-report .tab-icon{width:42px;height:42px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;margin-top:-14px;box-shadow:0 3px 10px rgba(232,74,47,.45);}
 
-/* ── Toast ───────────────────────────────────── */
+/* --- Toast --- */
 .toast{position:fixed;bottom:calc(var(--nav)+14px);left:50%;transform:translateX(-50%);z-index:9999;background:var(--navy);color:#fff;font-size:13px;font-weight:500;padding:9px 18px;border-radius:20px;white-space:nowrap;opacity:0;transition:opacity .25s;pointer-events:none;}
 .toast.show{opacity:1;}
 
-/* ── Cards & layout ──────────────────────────── */
+/* --- Cards & layout --- */
 .card{background:var(--card);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;}
 .section-pad{padding:12px 14px 0;}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--slate);margin-bottom:8px;}
@@ -72,13 +73,13 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .stat-val{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--navy);line-height:1;}
 .stat-lbl{font-size:11px;color:var(--slate);margin-top:3px;}
 
-/* ── Filter tabs ─────────────────────────────── */
+/* --- Filter tabs --- */
 .ftabs{display:flex;gap:6px;padding:10px 14px;overflow-x:auto;scrollbar-width:none;}
 .ftabs::-webkit-scrollbar{display:none;}
 .ftab{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--slate);font-family:'DM Sans',sans-serif;}
 .ftab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
 
-/* ── Chart nav ───────────────────────────────── */
+/* --- Chart nav --- */
 .chart-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .cnav-btn{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--navy);}
 .cnav-lbl{font-size:13px;font-weight:500;color:var(--slate);}
@@ -86,11 +87,11 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .chart-wrap.h200{height:200px;}
 .chart-wrap.h160{height:160px;}
 
-/* ── Charts 2-col ────────────────────────────── */
+/* --- Charts 2-col --- */
 .charts2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px;margin-bottom:10px;}
 .charts2 .card{margin-bottom:0;padding:12px;}
 
-/* ── Ranked list ─────────────────────────────── */
+/* --- Ranked list --- */
 .ranked-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
 .ranked-item:last-child{border-bottom:none;}
 .ranked-num{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;width:20px;flex-shrink:0;color:var(--slate);}
@@ -102,13 +103,13 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .bar-bg{height:5px;border-radius:3px;background:var(--border);}
 .bar-fill{height:100%;border-radius:3px;transition:width .4s ease;}
 
-/* ── Pred box ────────────────────────────────── */
+/* --- Pred box --- */
 .pred-box{margin:0 14px 10px;background:var(--navy);border-radius:var(--radius);padding:14px 16px;color:#fff;}
 .pred-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;opacity:.55;margin-bottom:4px;}
 .pred-val{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;}
 .pred-sub{font-size:11px;opacity:.6;margin-top:3px;}
 
-/* ── Form ────────────────────────────────────── */
+/* --- Form --- */
 .form-wrap{padding:14px 14px 0;}
 .form-lbl{font-size:12px;font-weight:500;color:var(--slate);margin-bottom:6px;display:block;}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
@@ -130,7 +131,7 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .btn-submit:disabled{opacity:.35;cursor:not-allowed;}
 .btn-submit.ok{background:var(--teal);}
 
-/* ── Datos view ──────────────────────────────── */
+/* --- Datos view --- */
 .datos-hdr{padding:18px 14px 14px;background:var(--navy);color:#fff;}
 .datos-hdr h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;margin-bottom:2px;}
 .datos-hdr p{font-size:12px;opacity:.55;}
@@ -143,7 +144,7 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .data-table td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--navy);}
 .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px;flex-shrink:0;}
 
-/* ── Map overlays ────────────────────────────── */
+/* --- Map overlays --- */
 #map{height:100%;width:100%;}
 .map-chips{position:absolute;top:10px;left:10px;right:10px;z-index:400;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
 .map-chips::-webkit-scrollbar{display:none;}
@@ -154,7 +155,7 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 .map-legend b{font-size:10px;color:var(--slate);display:block;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase;}
 .leg-row{display:flex;align-items:center;gap:5px;margin-bottom:3px;}
 
-/* ── Misc ────────────────────────────────────── */
+/* --- Misc --- */
 .disclaimer{font-size:11px;color:var(--slate);text-align:center;padding:8px 16px 20px;line-height:1.5;}
 </style>
 </head>
@@ -171,7 +172,7 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 </header>
 
 <div id="config-banner">
-  ⚠ Modo demo activo — reemplaza SUPABASE_URL y SUPABASE_ANON_KEY en el archivo para conectar tu base de datos.
+  ⚠ Modo demo activo : reemplaza SUPABASE_URL y SUPABASE_ANON_KEY en el archivo para conectar tu base de datos.
 </div>
 
 <main>
@@ -353,29 +354,37 @@ nav{flex-shrink:0;height:var(--nav);background:var(--card);border-top:1px solid 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 
-// ════════════════════════════════════════════════════════
-//   CONFIGURACIÓN — pega aquí tus credenciales de Supabase
-//   Dashboard → Settings → API
+// =======================================================
+//  CONFIGURACION - pega aqui tus credenciales de Supabase
+//  Dashboard > Settings > API
 // ════════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://eyggnztzigzzuowbkojy.supabase.co/';       // ej: https://xxxx.supabase.co
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5Z2duenR6aWd6enVvd2Jrb2p5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0NTEzOTYsImV4cCI6MjA5MzAyNzM5Nn0.nZzAZB1gxHB0VHmfGTVvo517f-kqBMB6VR8Kmbr2Gl0';  // clave anon/public
 // ════════════════════════════════════════════════════════
 
+
 const IS_DEMO = !SUPABASE_URL || SUPABASE_URL === 'TU_URL_AQUI';
 const sb = IS_DEMO ? null : supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ── Constantes ──────────────────────────────────────────
+// --- Constantes ---
+// Poligono municipio de Garcia, NL - incluye zona Cumbres sureste
 const GARCIA_POLY = [
-  [25.8480,-100.7000],[25.8550,-100.6200],[25.8500,-100.5400],
-  [25.8200,-100.5000],[25.7800,-100.4900],[25.7400,-100.5100],
-  [25.7100,-100.5600],[25.7050,-100.6400],[25.7200,-100.7100],
-  [25.7600,-100.7400],[25.8000,-100.7300],[25.8480,-100.7000]
+  [25.8600,-100.7200],[25.8620,-100.6400],[25.8580,-100.5600],
+  [25.8500,-100.5000],[25.8350,-100.4700],
+  [25.8200,-100.4500],[25.8050,-100.4400],
+  [25.7900,-100.4350],[25.7750,-100.4300],[25.7600,-100.4380],
+  [25.7500,-100.4500],[25.7400,-100.4700],
+  [25.7200,-100.5000],[25.7050,-100.5500],
+  [25.7000,-100.6200],[25.7100,-100.6800],
+  [25.7300,-100.7300],[25.7700,-100.7600],
+  [25.8100,-100.7500],[25.8400,-100.7300],
+  [25.8600,-100.7200]
 ];
 const TYPE_CLR = {quimico:'#E84A2F',combustion:'#D97706',organico:'#059669',plastico:'#7C3AED',otro:'#64748b'};
 const TYPE_NM  = {quimico:'Químico',combustion:'Combustión',organico:'Orgánico',plastico:'Plástico',otro:'Otro'};
 const DIAS     = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 
-// ── Zona classifier ──────────────────────────────────────
+// --- Zona classifier ---
 function zona(lat, lng) {
   if (lat >  25.800 && lng > -100.570) return 'Cumbres / Industrial Norte';
   if (lat >  25.800 && lng <=-100.570) return 'García Centro-Norte';
@@ -385,7 +394,7 @@ function zona(lat, lng) {
   return 'García Sur-Oeste';
 }
 
-// ── Demo data generator ──────────────────────────────────
+// --- Demo data generator ---
 function genDemo() {
   const tipos = ['quimico','quimico','quimico','quimico','combustion','plastico','organico','otro'];
   const notas = ['Olor fuerte, ojos irritados','Viene del este, zona industrial','Olor a solventes','Combustión industrial','','','Fuerte después de las 22h',''];
@@ -408,12 +417,12 @@ function genDemo() {
   return rows.sort((a,b) => new Date(b.created_at)-new Date(a.created_at));
 }
 
-// ── App state ────────────────────────────────────────────
+// --- App state ---
 let allR = [], tlOffset = 0, period = 7, mapFilter = 'all', heatOn = false;
 let curLat = null, curLng = null, locOK = false, curTipo = 'quimico', curInt = 1;
 let chartTL, chartTipo, chartHora, chartSemana;
 
-// ── Data ─────────────────────────────────────────────────
+// --- Data ---
 async function loadData() {
   if (IS_DEMO) {
     document.getElementById('config-banner').style.display = 'flex';
@@ -426,7 +435,7 @@ async function loadData() {
       allR = data;
     } catch(e) {
       console.error(e);
-      showToast('Error Supabase — usando datos demo');
+      showToast('Error Supabase : usando datos demo');
       allR = genDemo();
     }
   }
@@ -441,11 +450,11 @@ async function saveReport(r) {
     lat: r.lat, lng: r.lng, tipo: r.tipo,
     intensidad: r.intensidad, notas: r.notas
   }]);
-  if (error) { showToast('Error al guardar — intenta de nuevo'); return false; }
+  if (error) { showToast('Error al guardar : intenta de nuevo'); return false; }
   await loadData(); return true;
 }
 
-// ── Map ──────────────────────────────────────────────────
+// --- Map ---
 let map, heatL, mrkL, srcCircle, srcMarker;
 
 function initMap() {
@@ -514,7 +523,7 @@ function toggleHeat(btn) {
   else{map.removeLayer(heatL);btn.textContent='calor OFF';btn.style.background='#fff';btn.style.color='';}
 }
 
-// ── Analytics ────────────────────────────────────────────
+// --- Analytics ---
 function getFiltered() {
   if (!period) return allR;
   const cut = new Date(Date.now()-period*86400000);
@@ -535,18 +544,18 @@ function renderAnalytics() {
 
 function renderStats(rows) {
   const tot = rows.length;
-  const avg = tot ? (rows.reduce((s,r)=>s+(r.intensidad||1),0)/tot).toFixed(1) : '—';
+  const avg = tot ? (rows.reduce((s,r)=>s+(r.intensidad||1),0)/tot).toFixed(1) : '--';
   const byday={};
   rows.forEach(r=>{ const d=r.created_at.slice(0,10); byday[d]=(byday[d]||0)+1; });
   const pk = Object.entries(byday).sort((a,b)=>b[1]-a[1])[0];
-  const pkStr = pk ? `${pk[0].slice(5)} (${pk[1]})` : '—';
+  const pkStr = pk ? `${pk[0].slice(5)} (${pk[1]})` : '--';
   const byhr = Array(24).fill(0);
   rows.forEach(r=>byhr[new Date(r.created_at).getHours()]++);
   const pkH = byhr.indexOf(Math.max(...byhr));
   document.getElementById('an-total').textContent = tot;
   document.getElementById('an-avg').textContent   = avg;
-  document.getElementById('an-peak').textContent  = tot ? pkStr : '—';
-  document.getElementById('an-hour').textContent  = tot ? pkH+'h' : '—';
+  document.getElementById('an-peak').textContent  = tot ? pkStr : '--';
+  document.getElementById('an-hour').textContent  = tot ? pkH+'h' : '--';
 }
 
 function renderPredBox(rows) {
@@ -559,7 +568,7 @@ function renderPredBox(rows) {
   const ds = rows.map(r=>Math.sqrt(Math.pow((r.lat-cLat)*111000,2)+Math.pow((r.lng-cLng)*111000*Math.cos(cLat*Math.PI/180),2)));
   const rad = Math.max((ds.reduce((s,d)=>s+d,0)/ds.length)*.55, 130);
   document.getElementById('pred-val').textContent = `${zona(cLat,cLng)} · radio ~${Math.round(rad)} m`;
-  document.getElementById('pred-sub').textContent = `${cLat.toFixed(4)}, ${cLng.toFixed(4)} — estimación estadística`;
+  document.getElementById('pred-sub').textContent = `${cLat.toFixed(4)}, ${cLng.toFixed(4)} / estimacion estadistica`;
 }
 
 // Timeline chart
@@ -590,7 +599,7 @@ function renderTimeline() {
   }
   const opts={month:'short',day:'numeric'};
   document.getElementById('tl-label').textContent =
-    `${start.toLocaleDateString('es-MX',opts)} – ${end.toLocaleDateString('es-MX',opts)}`;
+    `${start.toLocaleDateString('es-MX',opts)} - ${end.toLocaleDateString('es-MX',opts)}`;
   const ctx=document.getElementById('c-timeline');
   if(chartTL) chartTL.destroy();
   chartTL = new Chart(ctx,{type:'bar',
@@ -705,7 +714,7 @@ function setPeriod(btn, d) {
   renderAnalytics();
 }
 
-// ── Data table ───────────────────────────────────────────
+// --- Data table ---
 function renderDataTable() {
   const tbody=document.getElementById('data-tbody');
   const rows=allR.slice(0,150);
@@ -722,7 +731,7 @@ function renderDataTable() {
   }).join('');
 }
 
-// ── Export ───────────────────────────────────────────────
+// --- Export ---
 function exportCSV() {
   const rows=['\uFEFFid,lat,lng,tipo,intensidad,zona,notas,fecha_iso'];
   allR.forEach(r=>rows.push(
@@ -741,7 +750,7 @@ function dl(content, type, name) {
 }
 function today() { return new Date().toISOString().slice(0,10); }
 
-// ── Form ─────────────────────────────────────────────────
+// --- Form ---
 function ptInPoly(lat,lng,poly) {
   let inside=false;
   for(let i=0,j=poly.length-1;i<poly.length;j=i++){
@@ -787,7 +796,7 @@ function selChip(el, grpId) {
 async function submitReport() {
   if(!locOK){showToast('Primero verifica tu ubicación GPS');return;}
   const btn=document.getElementById('btn-submit');
-  btn.disabled=true; btn.textContent='Enviando…';
+  btn.disabled=true; btn.textContent='Enviando...';
   const ok=await saveReport({lat:curLat,lng:curLng,tipo:curTipo,intensidad:curInt,notas:document.getElementById('notes').value.trim(),created_at:new Date().toISOString()});
   if(ok){
     btn.textContent='✓ Reporte enviado'; btn.classList.add('ok');
@@ -803,7 +812,7 @@ async function submitReport() {
   }
 }
 
-// ── Navigation ───────────────────────────────────────────
+// --- Navigation ---
 function switchTab(tab) {
   ['mapa','analytics','reportar','datos'].forEach(t=>{
     document.getElementById(`view-${t}`)?.classList.toggle('active',t===tab);
@@ -814,14 +823,14 @@ function switchTab(tab) {
   if(tab==='datos')     renderDataTable();
 }
 
-// ── Toast ────────────────────────────────────────────────
+// --- Toast ---
 function showToast(msg) {
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3200);
 }
 
-// ── Init ─────────────────────────────────────────────────
+// --- Init ---
 document.addEventListener('DOMContentLoaded', async ()=>{
   initMap();
   await loadData();
@@ -829,3 +838,4 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 </script>
 </body>
 </html>
+
